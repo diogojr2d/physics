@@ -1,0 +1,31 @@
+{
+    "name": "physics",
+    "version": "1.0.0",
+    "description": "Physics simulation tests",
+    "main": "server.js",
+    "devDependencies": {
+        "@types/requirejs": "^2.1.31",
+        "express": "^4.15.5",
+        "tslint": "^5.7.0",
+        "typescript": "^2.5.3"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "npm run build && mocha -u tdd out/test/",
+        "postinstall": "npm run build",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/diogojr2d/physics.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/diogojr2d/physics/issues"
+    },
+    "homepage": "https://github.com/diogojr2d/physics#readme",
+    "dependencies": {
+        "tslib": "^1.7.1"
+    }
+}

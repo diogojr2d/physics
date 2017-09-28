@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "./build",
-        "allowJs": true,
+        "outDir": "build",
+        "module": "amd",
         "target": "es5",
-        "module": "amd"
+        "lib": [ "es2017", "esnext", "DOM" ],
+        "plugins": [{
+            "name": "tslint-language-service"
+        }]
     },
     "include": [
-        "./src/**/*"
+        "src/**/*.ts"
     ]
 }
