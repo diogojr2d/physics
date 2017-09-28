@@ -2,9 +2,10 @@ import Entity from "./Entity"
 import Box from "./Box"
 
 export default class Game {
-    static entities: Array<Entity>;
+    entities: Entity[];
 
     constructor(width: number, height: number) {
+        this.entities = [];
         Globais.canvas = document.createElement("canvas");
         Globais.canvas.width = width;
         Globais.canvas.height = height;
@@ -15,32 +16,31 @@ export default class Game {
         // Add Event Listeners
         Globais.canvas.addEventListener("mousedown", click);
         
-        Globais.entities.push(new Box(50, 20, Globais.size, Globais.size));
+        this.entities.push(new Box(50, 20, Globais.size, Globais.size));
     }
     
     // Main Loop
-    run() {
+    public run(): void {
         this.update();
         this.draw();
 
-        window.requestAnimationFrame(this.run);
+        window.requestAnimationFrame(() => this.run());
     }
 
-    private update() {
-        for (let i = 0; i < Globais.entities.length; i++) {
-            Globais.entities[i].update();
+    private update(): void {
+        for (const entity of this.entities) {
+            entity.update();
         }
     }
 
-    private draw() {
-        for (let i = 0; i < Globais.entities.length; i++) {
-            Globais.entities[i].draw();
+    private draw(): void {
+        for (const entity of this.entities) {
+            entity.draw();
         }
     }
 }
 
-Globais.entities = new Array<Entity>();
-let game = new Game(800, 600);
+const game = new Game(800, 600);
 game.run();
 
 function click(evt) {
@@ -49,5 +49,5 @@ function click(evt) {
 
     let b: Box = new Box(x, y, Globais.size, Globais.size);
 
-    Game.entities.push(b);
+    game.entities.push(b);
 }
